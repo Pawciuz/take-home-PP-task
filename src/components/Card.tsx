@@ -40,8 +40,14 @@ export const Card: FC<CardProps> = ({ card, deleteCard }) => {
         </div>
       </div>
 
-      {hasDescription(card) && isExpanded && (
-        <p className="text-sm mt-1">{card.description}</p>
+      {hasDescription(card) && (
+        <div
+          className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${
+            isExpanded ? "max-h-[200px]" : "max-h-0"
+          }`}
+        >
+          <p className="text-sm mt-1">{card.description}</p>
+        </div>
       )}
     </div>
   );

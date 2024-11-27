@@ -72,6 +72,12 @@ export const useCardsStore = create(
 
           if (!cardToDelete) return state;
 
+          const isAlreadyDeleted = state.deletedCards.some(
+            (card) => card.id === id,
+          );
+
+          if (isAlreadyDeleted) return state;
+
           return {
             visibleCards: state.visibleCards.filter((card) => card.id !== id),
             deletedCards: [
